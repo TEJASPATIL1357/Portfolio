@@ -1,14 +1,15 @@
-
+import project1 from '../assets/project1.png';
+import project2 from '../assets/project2.jpg';
 
 const projects = [
   {
     title: 'Expense-Tracker-Dash',
-    image: 'src/assets/project1.png', // Replace with actual image
+    image: project1,
     github: 'https://github.com/TEJASPATIL1357/Expense-Tracker-Dash'
   },
   {
     title: 'Stock Forecasting Dashboard',
-    image: 'src/assets/project2.jpg', // Replace with actual image
+    image: project2,
     github: 'https://github.com/TEJASPATIL1357/Stock-Visualization-and-Forecasting'
   }
 ];
