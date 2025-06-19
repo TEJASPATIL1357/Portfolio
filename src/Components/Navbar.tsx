@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="w-full bg-gray-800 text-white shadow-lg sticky top-0 z-50">
       <div className="flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <h1 className="text-xl font-bold">My <span className="text-blue-400">Portfolio</span></h1>
+        <h1 className="text-xl font-bold">Tejas's<span className="text-blue-400">Portfolio</span></h1>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6 items-center">
