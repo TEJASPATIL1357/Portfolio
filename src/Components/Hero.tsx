@@ -15,7 +15,7 @@ const Hero = () => {
         alt="Myself"
         className="w-65 h-60 rounded-full object-cover border-4 border-white shadow-lg mb-4 hover:scale-105 transition"
       />
-      <h1 className="text-4xl font-bold mb-2">Hey, I’m Tejas Patil</h1>
+      <h1 className="text-4xl font-bold mb-2">Hey, I’m Tejas patil</h1>
       <p className="text-lg text-gray-300 mb-6">I'm a passionate Frontend Developer</p>
       <button
         onClick={() => setIsOpen(true)}

@@ -1,6 +1,6 @@
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.jpg';
-
+import project3 from '../assets/project3.jpeg'
 const projects = [
   {
     title: 'Expense-Tracker-Dash',
@@ -11,6 +11,11 @@ const projects = [
     title: 'Stock Forecasting Dashboard',
     image: project2,
     github: 'https://github.com/TEJASPATIL1357/Stock-Visualization-and-Forecasting'
+  },
+  {
+    title: 'Student Grading System',
+    image: project3,
+    github: 'https://student-grading-system.onrender.com'
   }
 ];
 

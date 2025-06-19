@@ -10,10 +10,10 @@ const Contact: React.FC = () => {
     if (formRef.current) {
       emailjs
         .sendForm(
-          'service_wepcy7j',         // ✅ Your Service ID
-          'template_whs0zkp',        // ✅ Your Template ID
+          'service_wepcy7j',         // Your Service ID
+          'template_whs0zkp',        //  Your Template ID
           formRef.current,
-          'JQYYzgv-HOu4EXdfH'        // ✅ Your Public Key
+          'JQYYzgv-HOu4EXdfH'        //  Your Public Key
         )
         .then(
           (result) => {
