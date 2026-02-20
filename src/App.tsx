@@ -1,27 +1,21 @@
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
-import Navbar from './Components/Navbar';
-import Hero from './Components/Hero';
-import About from './Components/About';
-import Experience from './Components/Experience';
-import Projects from './Components/Projects';
-import Skills from './Components/Skills';
-import Contact from './Components/Contact';
-import Footer from './Components/Footer';
-
-const App = () => {
+function App() {
   return (
-    <div className="font-sans">
+    <div className="bg-[#0d1117] text-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />
-      <div className="w-4/5 mx-auto my-10 h-[2px] bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 rounded-full"></div>
-      <Experience />
       <Projects />
       <Skills />
       <Contact />
-      <Footer />
     </div>
   );
-};
+}
 
 export default App;

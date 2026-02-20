@@ -1,75 +1,65 @@
-import React, { useRef, FormEvent } from 'react';
-import emailjs from '@emailjs/browser';
+import { motion } from "framer-motion";
 
-const Contact: React.FC = () => {
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (formRef.current) {
-      emailjs
-        .sendForm(
-          'service_wepcy7j',         // Your Service ID
-          'template_whs0zkp',        //  Your Template ID
-          formRef.current,
-          'JQYYzgv-HOu4EXdfH'        //  Your Public Key
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            alert('✅ Message sent successfully!');
-            formRef.current?.reset();
-          },
-          (error) => {
-            console.error('❌ Email send error:', error.text);
-            alert('❌ Failed to send message. Please try again.');
-          }
-        );
-    }
-  };
-
+const Contact = () => {
   return (
-    <section id="contact" className="bg-gray-900 text-white py-16 px-4">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-8">Contact Me</h2>
+    <section id="contact" className="py-24 px-6">
+      <div className="max-w-4xl mx-auto">
 
-        <form
-          ref={formRef}
-          onSubmit={sendEmail}
-          className="flex flex-col gap-6 bg-gray-800 p-8 rounded-2xl shadow-xl"
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-bold mb-12 text-center"
         >
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Your Name"
-            className="p-4 rounded-md bg-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            required
-          />
+          Get In <span className="text-blue-500">Touch</span>
+        </motion.h2>
 
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Your Email"
-            className="p-4 rounded-md bg-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            required
-          />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-[#161b22] border border-gray-800 rounded-2xl p-8 shadow-xl"
+        >
+          <form className="space-y-6">
 
-          <textarea
-            name="message"
-            rows={5}
-            placeholder="Your Message"
-            className="p-4 rounded-md bg-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
-            required
-          ></textarea>
+            <div>
+              <label className="block text-gray-400 mb-2">Your Name</label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="w-full bg-[#0d1117] border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
 
-          <button
-            type="submit"
-            className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-md transition-all duration-300 ease-in-out"
-          >
-            Send Message
-          </button>
-        </form>
+            <div>
+              <label className="block text-gray-400 mb-2">Your Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full bg-[#0d1117] border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-400 mb-2">Message</label>
+              <textarea
+                rows={4}
+                placeholder="Write your message..."
+                className="w-full bg-[#0d1117] border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition"
+              />
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition shadow-lg"
+            >
+              Send Message
+            </motion.button>
+
+          </form>
+        </motion.div>
       </div>
     </section>
   );

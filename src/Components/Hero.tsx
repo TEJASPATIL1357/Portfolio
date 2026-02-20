@@ -1,43 +1,141 @@
-import { useState } from 'react';
-import Popup from './Popup';
-import MyImage from '../assets/My-Image.jpg'; // ✅ Correct import path
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+import heroDesktop from "../assets/hero-desktop.png";
+import heroMobile from "../assets/hero-mobile.png";
 
 const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <section
-      id="hero"
-      className="min-h-screen flex flex-col justify-center items-center text-center bg-gray-900 text-white px-4"
-    >
-      <img
-        src={MyImage}
-        alt="Myself"
-        className="w-65 h-60 rounded-full object-cover border-4 border-white shadow-lg mb-4 hover:scale-105 transition"
-      />
-      <h1 className="text-4xl font-bold mb-2">Hey, I’m Tejas patil</h1>
-      <p className="text-lg text-gray-300 mb-6">I'm a passionate Frontend Developer</p>
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white transition"
-      >
-        Hire Me
-      </button>
+    <>
+      {/* ================= DESKTOP HERO ================= */}
+<section className="hidden md:flex relative min-h-screen items-center overflow-hidden bg-[#0d1117]">
 
-      {/* 👁️ Visitor Count Badge */}
-      <div className="mt-6 bg-gray-800 px-4 py-2 rounded-full shadow-md">
-        <span className="text-cyan-400 font-semibold">1,257</span> people viewed this portfolio
+  {/* Image manually controlled */}
+  <img
+    src={heroDesktop}
+    alt="Hero"
+    className="
+      absolute
+      right-0
+      top-10
+      w-[1590px]      
+      max-w-none
+      select-none
+      pointer-events-none
+    "
+  />
+
+  {/* Left fade overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0d1117] via-[#0d1117]/70 to-transparent"></div>
+
+  {/* Text */}
+  <div className="relative z-21 w-full pl-24 pr-0 pt-22">
+    <div className="max-w-lg">
+
+      <h1 className="font-lora text-6xl font-semibold tracking-[-0.5px] text-white">
+        Hi, I'm{" "}
+        <span className="font-lora font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+  Tejas Patil
+</span>
+      </h1>
+
+      <p className="mt-6 text-2xl text-gray-300">
+        <Typewriter
+          words={[
+            "React Developer",
+            "Cyber Security Enthusiast",
+            "Full Stack Engineer"
+          ]}
+          loop
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={1500}
+        />
+      </p>
+
+      <div className="mt-10 flex gap-6">
+        <a
+          href="#projects"
+          className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl transition shadow-xl"
+        >
+          View Projects
+        </a>
+
+        <a
+          href="#contact"
+          className="px-8 py-4 border border-gray-500 hover:border-blue-400 rounded-xl transition"
+        >
+          Contact Me
+        </a>
       </div>
 
-      {/* ✨ Decorative Divider */}
-      <div className="w-1/2 border-t-2 border-cyan-400 mt-12 mb-[-80px] rounded-full"></div>
+    </div>
+  </div>
+</section>
+      {/* ================= MOBILE HERO ================= */}
+<section
+  className="
+    md:hidden
+    relative
+    min-h-screen
+    flex
+    items-center
+    justify-center
+    bg-cover
+    bg-center
+    overflow-hidden
+  "
+  style={{ backgroundImage: `url(${heroMobile})` }}
+>
 
-      {/* Popup Modal */}
-      <Popup isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <h2 className="text-xl font-semibold mb-2">Let's work together!</h2>
-        <p>You can reach me at <a href="mailto:tp257188@gmail.com" className="text-blue-400">tp257188@gmail.com</a></p>
-      </Popup>
-    </section>
+  {/* Strong overlay for readability */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#0d1117]/80 via-[#0d1117]/60 to-[#0d1117]/90"></div>
+
+  <div className="relative z-20 text-center px-6 pt-28">
+
+    <h1 className="text-4xl font-extrabold text-white leading-tight">
+      Hi, I'm{" "}
+      <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+        Tejas Patil
+      </span>
+    </h1>
+
+    <p className="mt-4 text-lg text-gray-300">
+      <Typewriter
+        words={[
+          "React Developer",
+          "Cyber Security Enthusiast",
+          "Full Stack Engineer"
+        ]}
+        loop
+        cursor
+        cursorStyle="|"
+        typeSpeed={70}
+        deleteSpeed={50}
+        delaySpeed={1500}
+      />
+    </p>
+
+    <div className="mt-6 flex flex-col gap-4">
+      <a
+        href="#projects"
+        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl transition shadow-lg"
+      >
+        View Projects
+      </a>
+
+      <a
+        href="#contact"
+        className="px-6 py-3 border border-gray-500 hover:border-blue-400 rounded-xl transition"
+      >
+        Contact Me
+      </a>
+    </div>
+
+  </div>
+</section>
+    </>
   );
 };
 

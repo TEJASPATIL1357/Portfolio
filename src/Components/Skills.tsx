@@ -1,48 +1,47 @@
+import { motion } from "framer-motion";
 
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaPython, FaJava } from 'react-icons/fa';
-import { SiTailwindcss, SiTypescript, SiC } from 'react-icons/si';
+const skills = [
+  "C",
+  "Java",
+  "Python",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React.js",
+  "Tailwind CSS",
+  "MySQL",
+  "Git",
+];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 px-6 bg-[#0f172a] text-white text-center">
-      <h2 className="text-3xl font-bold mb-10">Skills</h2>
+    <section id="skills" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
 
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaHtml5 className="text-5xl text-orange-500" />
-          <span className="mt-2">HTML</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaCss3Alt className="text-5xl text-blue-500" />
-          <span className="mt-2">CSS</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaJsSquare className="text-5xl text-yellow-400" />
-          <span className="mt-2">JavaScript</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaReact className="text-5xl text-cyan-400" />
-          <span className="mt-2">React</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <SiTypescript className="text-5xl text-blue-400" />
-          <span className="mt-2">TypeScript</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <SiTailwindcss className="text-5xl text-teal-400" />
-          <span className="mt-2">Tailwind</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <SiC className="text-5xl text-blue-300" />
-          <span className="mt-2">C</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaJava className="text-5xl text-red-400" />
-          <span className="mt-2">Java</span>
-        </div>
-        <div className="flex flex-col items-center hover:scale-110 transition-transform duration-300">
-          <FaPython className="text-5xl text-yellow-300" />
-          <span className="mt-2">Python</span>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-bold mb-12 text-center"
+        >
+          Technical <span className="text-blue-500">Skills</span>
+        </motion.h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="bg-[#161b22] border border-gray-800 rounded-xl p-6 text-center shadow-md hover:border-blue-500 hover:shadow-blue-500/20 transition"
+            >
+              <p className="text-gray-300 font-medium">{skill}</p>
+            </motion.div>
+          ))}
+
         </div>
       </div>
     </section>
