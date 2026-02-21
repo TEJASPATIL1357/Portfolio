@@ -3,6 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 import heroDesktop from "../assets/hero-desktop.png";
 import heroMobile from "../assets/hero-mobile.png";
 
+
 const Hero = () => {
   return (
     <>
