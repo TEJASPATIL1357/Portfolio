@@ -50,10 +50,10 @@ const Projects = () => {
               glareEnable={true}
               glareMaxOpacity={0.15}
               scale={1.03}
-              transitionSpeed={400}
+              transitionSpeed={50}
               tiltMaxAngleX={10}
               tiltMaxAngleY={10}
-              className="rounded-2xl"
+              className="rounded-5xl"
             >
               <div className="bg-[#161b22] border border-gray-800 rounded-2xl p-6 shadow-lg hover:border-blue-500 transition duration-300">
 

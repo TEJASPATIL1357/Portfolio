@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+
 const Navbar = () => {
   return (
     <motion.nav
@@ -8,9 +9,9 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
       className="fixed w-full bg-[#0d1117]/80 backdrop-blur-md border-b border-gray-800 z-50"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-9xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 className="text-xl font-bold tracking-wide">
-          Tejas<span className="text-blue-500">.dev</span>
+          Tejas <span className="text-blue-500">Patil</span>
         </h1>
 
         <div className="space-x-6 text-gray-300 hidden md:block">

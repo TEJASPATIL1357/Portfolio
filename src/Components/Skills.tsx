@@ -38,7 +38,7 @@ const Skills = () => {
   return (
     <section className="relative bg-[#0d1117] py-32 px-6 lg:px-16 overflow-hidden">
 
-      {/* ⭐ STAR BACKGROUND */}
+      {/*  STAR BACKGROUND */}
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -48,7 +48,7 @@ const Skills = () => {
         }}
       ></div>
 
-      {/* 🌌 GALAXY RADIAL GLOW */}
+      {/*  GALAXY RADIAL GLOW */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 blur-[180px] rounded-full"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">

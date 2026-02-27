@@ -42,9 +42,10 @@ const Hero = () => {
       <p className="mt-6 text-2xl text-gray-300">
         <Typewriter
           words={[
-            "React Developer",
-            "Cyber Security Enthusiast",
-            "Full Stack Engineer"
+            "Backend Developer ",
+            "Cyber Security Enthusiast ",
+            "Full Stack Developer ",
+            "Spring Boot Learner "
           ]}
           loop
           cursor
@@ -105,16 +106,17 @@ const Hero = () => {
     <p className="mt-4 text-lg text-gray-300">
       <Typewriter
         words={[
-          "React Developer",
-          "Cyber Security Enthusiast",
-          "Full Stack Engineer"
+          "Backend Developer ",
+            "Cyber Security Enthusiast ",
+            "Full Stack Developer ",
+            "Spring Boot Learner "
         ]}
         loop
         cursor
         cursorStyle="|"
-        typeSpeed={70}
-        deleteSpeed={50}
-        delaySpeed={1500}
+        typeSpeed={34}
+        deleteSpeed={40}
+        delaySpeed={1600}
       />
     </p>
 
