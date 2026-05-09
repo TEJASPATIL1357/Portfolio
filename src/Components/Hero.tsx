@@ -246,14 +246,14 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 }}
-          className="relative z-20 flex items-center justify-center w-full min-h-[350px] lg:min-h-[560px]"
+          className="absolute inset-0 lg:relative z-0 lg:z-20 flex items-center justify-center w-full opacity-30 lg:opacity-100 pointer-events-none lg:pointer-events-auto"
         >
           {/* Layered glow halos */}
           <div className="absolute inset-0 rounded-full bg-heist-red/8 blur-[160px] animate-pulse pointer-events-none" />
           <div className="absolute inset-12 rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none" />
 
           {/* 3D Orb */}
-          <div className="w-full h-full min-h-[350px] lg:min-h-[560px]">
+          <div className="w-full h-full lg:min-h-[560px]">
             <TechOrb3D />
           </div>
 

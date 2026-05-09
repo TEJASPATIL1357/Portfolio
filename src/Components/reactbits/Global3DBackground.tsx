@@ -33,7 +33,7 @@ function VaultEnvironment() {
       <ScrollScene mouse={mouse} mobile={mobile} />
 
       {/* Reduced sparkles */}
-      <Sparkles count={mobile ? 0 : 8} scale={15} size={2} speed={0.3} color="#e50914" />
+      <Sparkles count={mobile ? 3 : 8} scale={15} size={2} speed={0.3} color="#e50914" />
     </>
   );
 }
@@ -168,12 +168,12 @@ const Global3DBackground = () => {
   const mobile = isMobile();
 
   // Skip 3D background entirely on mobile — massive perf win
-  if (mobile) return null;
+  // if (mobile) return null; // Re-enabled for mobile as per user request
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none">
-      <Canvas shadows={false} dpr={[1, 1]}>
-        <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={50} />
+      <Canvas shadows={false} dpr={[1, 1]} frameloop={mobile ? 'demand' : 'always'}>
+        <PerspectiveCamera makeDefault position={[0, 0, mobile ? 6 : 4]} fov={50} />
         <Suspense fallback={null}>
           <VaultEnvironment />
           <ScrollCamera />
