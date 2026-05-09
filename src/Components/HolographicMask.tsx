@@ -3,6 +3,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useTexture, Float, Points, PointMaterial, Text, Sparkles } from '@react-three/drei';
 import HolographicTechIcons from './HolographicTechIcons';
+import daliFaceImg from '../assets/dali_face.png';
+import touristImg from '../assets/tourist.png';
 
 const TechTag = ({ text, position, color = "#e50914" }: { text: string, position: [number, number, number], color?: string }) => {
   const ref = useRef<THREE.Group>(null);
@@ -144,8 +146,8 @@ const HolographicMask = () => {
         <Suspense fallback={null}>
           <HolographicTechIcons />
           <TechnicalPoints 
-            imagePath="/assets/dali_face.png" 
-            armyPath="/assets/tourist.png" 
+            imagePath={daliFaceImg} 
+            armyPath={touristImg} 
           />
           
           <group rotation={[Math.PI / 2, 0, 0]}>

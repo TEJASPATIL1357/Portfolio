@@ -2,6 +2,12 @@ import ScrollFloat from './reactbits/ScrollFloat';
 import GridScan from './reactbits/GridScan';
 import SpotlightCard from './reactbits/SpotlightCard';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import touristImg from '../assets/tourist.png';
+import busImg from '../assets/bus.png';
+import stockImg from '../assets/stock.png';
+import expenseImg from '../assets/expense.png';
+import gradingImg from '../assets/grading.png';
+import parkingImg from '../assets/parking.png';
 
 const projects = [
   {
@@ -12,7 +18,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/crowd-management',
     live: '#',
     status: 'COMPLETED',
-    image: '/assets/tourist.png'
+    image: touristImg
   },
   {
     title: 'Safe School Bus Tracker',
@@ -22,7 +28,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/school-bus-tracker',
     live: '#',
     status: 'ACTIVE',
-    image: '/assets/bus.png'
+    image: busImg
   },
   {
     title: 'Stock Visualization Dash',
@@ -32,7 +38,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/stock-dashboard',
     live: '#',
     status: 'OPERATIONAL',
-    image: '/assets/stock.png'
+    image: stockImg
   },
   {
     title: 'Expense Tracker Web App',
@@ -42,7 +48,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/expense-tracker',
     live: '#',
     status: 'ACTIVE',
-    image: '/assets/expense.png'
+    image: expenseImg
   },
   {
     title: 'Student Grading System',
@@ -52,7 +58,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/student-grading-system',
     live: '#',
     status: 'COMPLETED',
-    image: '/assets/grading.png'
+    image: gradingImg
   },
   {
     title: 'Vehicle Parking System',
@@ -62,7 +68,7 @@ const projects = [
     github: 'https://github.com/TEJASPATIL1357/parking-system',
     live: '#',
     status: 'ACTIVE',
-    image: '/assets/parking.png'
+    image: parkingImg
   },
 ];
 

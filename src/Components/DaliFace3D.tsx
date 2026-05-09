@@ -2,6 +2,7 @@ import { useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useTexture, Float } from '@react-three/drei';
+import daliFaceImg from '../assets/dali_face.png';
 
 const TechnicalFace = ({ imagePath }: { imagePath: string }) => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -38,7 +39,7 @@ const DaliFace3D = () => {
         <pointLight position={[10, 10, 10]} intensity={1} color="#e50914" />
         <Suspense fallback={null}>
           <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-            <TechnicalFace imagePath="/assets/dali_face.png" />
+            <TechnicalFace imagePath={daliFaceImg} />
           </Float>
         </Suspense>
       </Canvas>
