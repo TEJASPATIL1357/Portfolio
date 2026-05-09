@@ -69,7 +69,7 @@ const HolographicMaterialImpl = shaderMaterial(
 extend({ HolographicMaterialImpl });
 
 const HolographicMaterial = (props: any) => {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   
   useFrame((state) => {
     if (ref.current) {
@@ -78,6 +78,7 @@ const HolographicMaterial = (props: any) => {
   });
 
   return (
+    // @ts-ignore
     <holographicMaterialImpl
       ref={ref}
       transparent
@@ -90,11 +91,4 @@ const HolographicMaterial = (props: any) => {
 
 export default HolographicMaterial;
 
-// JSX type declaration
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      holographicMaterialImpl: any;
-    }
-  }
-}
+

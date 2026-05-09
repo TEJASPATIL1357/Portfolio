@@ -1,7 +1,7 @@
-import React, { useRef, Suspense, useMemo } from 'react';
+import { useRef, Suspense, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useTexture, Float, Points, PointMaterial, Text, PerspectiveCamera, Sparkles } from '@react-three/drei';
+import { useTexture, Float, Points, PointMaterial, Text, Sparkles } from '@react-three/drei';
 import HolographicTechIcons from './HolographicTechIcons';
 
 const TechTag = ({ text, position, color = "#e50914" }: { text: string, position: [number, number, number], color?: string }) => {
@@ -48,7 +48,7 @@ const DataPipeline = () => {
 
   return (
     <group>
-      {points.map((p, i) => (
+      {points.map((_, i) => (
         <Sparkles key={i} count={5} scale={1} size={1} speed={0.5} color="#e50914" />
       ))}
     </group>

@@ -37,7 +37,7 @@ const ModelViewer = ({
       <ErrorBoundary fallback={<div className="w-full h-full flex items-center justify-center text-gray-600 font-mono text-xs">3D Preview Unavailable</div>}>
         <Canvas shadows camera={{ position: [0, 0, 5], fov: 45 }}>
           <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.6} contactShadow={{ opacity: 0.6 }}>
+            <Stage environment="city" intensity={0.6}>
               <Center>
                 <Model url={modelUrl} onLoad={() => setLoading(false)} />
               </Center>

@@ -244,12 +244,11 @@ const Hero = () => {
 
         {/* RIGHT COLUMN — hidden on mobile to save GPU */}
         <motion.div
-          style={{ y: smoothY }}
+          style={{ y: smoothY, minHeight: '560px' }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 }}
           className="relative z-20 hidden lg:flex items-center justify-center"
-          style={{ minHeight: '560px' } as React.CSSProperties}
         >
           {/* Layered glow halos */}
           <div className="absolute inset-0 rounded-full bg-heist-red/8 blur-[160px] animate-pulse pointer-events-none" />

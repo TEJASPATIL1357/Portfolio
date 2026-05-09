@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Float, Sparkles, PerspectiveCamera, useAnimations } from '@react-three/drei';
-import { Suspense, useRef, useMemo, useState, useEffect } from 'react';
+import { Suspense, useRef, useMemo, useEffect } from 'react';
 import * as THREE from 'three';
 import { useScroll } from 'framer-motion';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
@@ -10,7 +10,6 @@ const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768;
 
 // ── lightweight environment ──────────────────────────────────────────────────
 function VaultEnvironment() {
-  const { scrollYProgress } = useScroll();
   const mouse = useRef(new THREE.Vector2());
   const mobile = isMobile();
 
@@ -90,7 +89,7 @@ function HeistCharacter({ url, mouse, ...props }: any) {
   const group = useRef<THREE.Group>(null!);
   const { scene, animations }: any = useGLTF(url);
   const { actions } = useAnimations(animations, group);
-  const headRef = useRef<THREE.Object3D>();
+  const headRef = useRef<THREE.Object3D>(null);
 
   useEffect(() => {
     if (actions?.['Idle']) actions['Idle'].play();
@@ -178,7 +177,7 @@ const Global3DBackground = () => {
         <Suspense fallback={null}>
           <VaultEnvironment />
           <ScrollCamera />
-          <EffectComposer multisampling={0} disableNormalPass>
+          <EffectComposer multisampling={0}>
             <Bloom luminanceThreshold={1.6} intensity={0.7} radius={0.2} />
             <Vignette darkness={1.0} />
           </EffectComposer>

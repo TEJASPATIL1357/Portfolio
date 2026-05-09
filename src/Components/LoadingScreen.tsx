@@ -6,7 +6,6 @@ const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
 function useScramble(target: string, trigger: boolean, speed = 40) {
   const [text, setText] = useState(target.replace(/./g, '_'));
-  const frame = useRef(0);
   const iter  = useRef(0);
 
   useEffect(() => {

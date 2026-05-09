@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -46,12 +46,12 @@ const SafeVault = () => {
           <torusGeometry args={[0.4, 0.05, 16, 32]} />
           <meshStandardMaterial color="#ffc107" roughness={0.1} metalness={1} />
         </mesh>
-        <mesh position={[0, 0, 0.2]}>
-          <cylinderGeometry args={[0.05, 0.05, 0.8, 16]} rotation={[0, 0, Math.PI / 2]} />
+        <mesh position={[0, 0, 0.2]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[0.05, 0.05, 0.8, 16]} />
           <meshStandardMaterial color="#ffc107" />
         </mesh>
-        <mesh position={[0, 0, 0.2]}>
-          <cylinderGeometry args={[0.05, 0.05, 0.8, 16]} rotation={[0, 0, 0]} />
+        <mesh position={[0, 0, 0.2]} rotation={[0, 0, 0]}>
+          <cylinderGeometry args={[0.05, 0.05, 0.8, 16]} />
           <meshStandardMaterial color="#ffc107" />
         </mesh>
       </group>

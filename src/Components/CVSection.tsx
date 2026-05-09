@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaFileDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 import SpotlightCard from './reactbits/SpotlightCard';

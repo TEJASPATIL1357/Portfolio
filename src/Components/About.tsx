@@ -3,7 +3,7 @@ import ScrollFloat from './reactbits/ScrollFloat';
 import SystemTerminal from './SystemTerminal';
 import CardSwap from './reactbits/CardSwap';
 import LaserFlow from './reactbits/LaserFlow';
-import TiltedCard from './reactbits/TiltedCard';
+
 
 const aboutParagraphs = [
   "I am a third-year Computer Engineering student at R. C. Patel Institute of Technology, Shirpur. I specialize in building robust full-stack applications with a focus on scalable architecture and seamless user experiences.",
