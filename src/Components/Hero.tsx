@@ -103,7 +103,7 @@ const Hero = () => {
                       flex flex-col lg:grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-0 items-center min-h-[100dvh]">
 
         {/* ════ LEFT: Text Column ════ */}
-        <motion.div style={{ y: yText, opacity }} className="w-full z-20 flex flex-col justify-center">
+        <motion.div style={{ y: yText, opacity }} className="w-full z-30 relative flex flex-col justify-center">
 
           <motion.div
             initial={{ opacity: 0, y: -16 }}
@@ -246,7 +246,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 }}
-          className="absolute inset-0 lg:relative z-0 lg:z-20 flex items-center justify-center w-full opacity-30 lg:opacity-100 pointer-events-none lg:pointer-events-auto"
+          className="absolute top-1/2 -translate-y-1/2 -right-[45%] w-[140%] h-[80%] lg:static lg:transform-none lg:w-full lg:h-full z-0 lg:z-20 flex items-center justify-center opacity-15 lg:opacity-100 pointer-events-none lg:pointer-events-auto"
         >
           {/* Layered glow halos */}
           <div className="absolute inset-0 rounded-full bg-heist-red/8 blur-[160px] animate-pulse pointer-events-none" />
