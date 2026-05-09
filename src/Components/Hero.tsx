@@ -74,7 +74,7 @@ const Hero = () => {
   const smoothY = useSpring(yOrb, { stiffness: 60, damping: 20 });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-transparent">
+    <section id="hero" className="relative min-h-[100dvh] flex items-center overflow-hidden bg-transparent">
 
       {/* ── Background layers ── */}
       {/* Left-side dark gradient so text stays readable */}
@@ -99,8 +99,8 @@ const Hero = () => {
       />
 
       {/* ── Two-column layout ── */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-28 pb-24
-                      grid lg:grid-cols-[1fr_1fr] gap-0 items-center min-h-screen">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 pb-12 lg:pt-28 lg:pb-24
+                      flex flex-col lg:grid lg:grid-cols-[1fr_1fr] gap-8 lg:gap-0 items-center min-h-[100dvh]">
 
         {/* ════ LEFT: Text Column ════ */}
         <motion.div style={{ y: yText, opacity }} className="w-full z-20 flex flex-col justify-center">
@@ -136,7 +136,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="leading-none"
+            className="leading-none mt-1 sm:mt-0"
           >
             <GlitchName text="Tejas" />
             <GlitchName text="Patil" />
@@ -163,12 +163,11 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.7 }}
-            className="mt-5 text-[12px] sm:text-sm text-white/30 max-w-md leading-[1.9] font-mono"
+            className="mt-5 text-[11px] sm:text-sm text-white/40 max-w-md leading-[1.9] font-mono"
           >
             3rd-year Computer Engineering student at RCPIT — building full-stack
             web apps with <span className="text-heist-red/70">React</span>,{' '}
@@ -177,35 +176,34 @@ const Hero = () => {
             E-Builders Club lead.
           </motion.p>
 
-          {/* CTA buttons */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 0.6 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 w-full sm:w-auto"
           >
             <a href="#projects"
-              className="group relative flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full
-                         bg-heist-red text-white font-black text-[10px] sm:text-[11px] tracking-[0.2em] uppercase
+              className="group relative flex justify-center items-center gap-2 px-6 sm:px-8 py-3.5 rounded-full
+                         bg-heist-red text-white font-black text-[11px] tracking-[0.2em] uppercase
                          shadow-[0_0_30px_rgba(229,9,20,0.5)] hover:shadow-[0_0_50px_rgba(229,9,20,0.7)]
-                         hover:scale-[1.04] transition-all active:scale-95">
+                         hover:scale-[1.04] transition-all active:scale-95 w-full sm:w-auto">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               View Projects
             </a>
             <a href="#contact"
-              className="flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full
+              className="flex justify-center items-center gap-2 px-6 sm:px-8 py-3.5 rounded-full
                          bg-white/5 border border-white/10 text-white/60 font-black
-                         text-[10px] sm:text-[11px] tracking-[0.2em] uppercase
+                         text-[11px] tracking-[0.2em] uppercase
                          hover:bg-white/10 hover:border-white/20 hover:text-white
-                         transition-all backdrop-blur-xl active:scale-95">
+                         transition-all backdrop-blur-xl active:scale-95 w-full sm:w-auto">
               Hire Me
             </a>
             <a href="/assets/Tejas_Patil_CV.pdf" download
-              className="flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full
+              className="flex justify-center items-center gap-2 px-6 sm:px-8 py-3.5 rounded-full
                          bg-white/5 border border-heist-red/20 text-heist-red/60 font-black
-                         text-[10px] sm:text-[11px] tracking-[0.2em] uppercase
+                         text-[11px] tracking-[0.2em] uppercase
                          hover:bg-heist-red/10 hover:text-heist-red
-                         transition-all active:scale-95">
+                         transition-all active:scale-95 w-full sm:w-auto">
               Resume ↓
             </a>
           </motion.div>
@@ -242,20 +240,20 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT COLUMN — hidden on mobile to save GPU */}
+        {/* RIGHT COLUMN */}
         <motion.div
-          style={{ y: smoothY, minHeight: '560px' }}
+          style={{ y: smoothY }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease: 'easeOut', delay: 0.3 }}
-          className="relative z-20 hidden lg:flex items-center justify-center"
+          className="relative z-20 flex items-center justify-center w-full min-h-[350px] lg:min-h-[560px]"
         >
           {/* Layered glow halos */}
           <div className="absolute inset-0 rounded-full bg-heist-red/8 blur-[160px] animate-pulse pointer-events-none" />
           <div className="absolute inset-12 rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none" />
 
           {/* 3D Orb */}
-          <div className="w-full h-full" style={{ minHeight: '560px' }}>
+          <div className="w-full h-full min-h-[350px] lg:min-h-[560px]">
             <TechOrb3D />
           </div>
 

@@ -26,7 +26,7 @@ const funFacts = [
 
 const About = () => {
   return (
-    <section id="about" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="about" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-heist-red/5 blur-[150px] pointer-events-none" />
       <div className="absolute inset-0 grid-bg opacity-10" />

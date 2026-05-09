@@ -33,7 +33,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="experience" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-heist-red/5 blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto">

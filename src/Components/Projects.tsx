@@ -74,7 +74,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="projects" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       {/* Background with GridScan */}
       <GridScan className="opacity-15" />
       

@@ -8,7 +8,7 @@ const Contact = () => {
   const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="contact" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       {/* Background with ChromaGrid - Red Highlight */}
       <ChromaGrid className="opacity-20" colorHighlight="rgba(229, 9, 20, 0.3)" />
       

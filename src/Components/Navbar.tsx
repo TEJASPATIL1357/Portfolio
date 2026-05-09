@@ -84,7 +84,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 200 }}
-            className="fixed inset-0 z-[1400] bg-[#0a0a0a]/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 overflow-hidden"
+            className="fixed inset-0 z-[1400] bg-[#0a0a0a]/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-6 overflow-hidden"
           >
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-1/4 -right-20 w-80 h-80 bg-heist-red/10 rounded-full blur-[100px]" />
@@ -104,7 +104,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="relative text-4xl font-display font-black text-white/50 hover:text-heist-red transition-all duration-300 uppercase italic tracking-tighter group"
+                className="relative text-3xl md:text-4xl font-display font-black text-white/50 hover:text-heist-red transition-all duration-300 uppercase italic tracking-tighter group"
               >
                 <span className="relative z-10">{link.label}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-1 bg-heist-red group-hover:w-full transition-all duration-300" />

@@ -65,7 +65,7 @@ const Skills = () => {
     : skillsData.filter(s => s.category === activeTab);
 
   return (
-    <section id="skills" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="skills" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       <div className="absolute inset-0 grid-bg opacity-10" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-heist-red/5 blur-[150px] pointer-events-none" />
 

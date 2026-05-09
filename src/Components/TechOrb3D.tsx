@@ -201,9 +201,9 @@ export default function TechOrb3D() {
   }, []);
 
   return (
-    <div className="w-full h-full min-h-[420px]">
+    <div className="w-full h-full min-h-[350px] lg:min-h-[420px]">
       <Canvas
-        camera={{ position: [0, 0, mobile ? 10 : 9.5], fov: 46 }}
+        camera={{ position: [0, 0, mobile ? 12 : 9.5], fov: mobile ? 50 : 46 }}
         gl={{
           alpha: true, antialias: !mobile,
           toneMapping: THREE.ACESFilmicToneMapping,

@@ -19,7 +19,7 @@ const CVSection = () => {
   };
 
   return (
-    <section id="cv" className="relative py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
+    <section id="cv" className="relative py-20 lg:py-32 px-6 lg:px-16 overflow-hidden bg-transparent">
       <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-heist-red/5 blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -83,7 +83,7 @@ const CVSection = () => {
                   onClick={handleDownload}
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-3 px-8 py-4 bg-heist-red text-white font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] shadow-[0_15px_40px_rgba(229,9,20,0.35)] hover:brightness-110 transition-all"
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-heist-red text-white font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] shadow-[0_15px_40px_rgba(229,9,20,0.35)] hover:brightness-110 transition-all w-full sm:w-auto"
                 >
                   <FaFileDownload className={downloading ? 'animate-bounce' : ''} />
                   {downloading ? 'Downloading...' : 'Download CV'}
@@ -93,7 +93,7 @@ const CVSection = () => {
                   href="https://github.com/TEJASPATIL1357"
                   target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.04 }}
-                  className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white/60 font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] hover:bg-white/10 hover:text-white transition-all"
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white/60 font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] hover:bg-white/10 hover:text-white transition-all w-full sm:w-auto"
                 >
                   <FaGithub />
                   GitHub Profile
@@ -103,7 +103,7 @@ const CVSection = () => {
                   href="https://www.linkedin.com/in/tejas-patil-024ab0246"
                   target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.04 }}
-                  className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white/60 font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] hover:bg-white/10 hover:text-white transition-all"
+                  className="flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white/60 font-black text-xs uppercase tracking-[0.2em] rounded-[2rem] hover:bg-white/10 hover:text-white transition-all w-full sm:w-auto"
                 >
                   <FaLinkedin />
                   LinkedIn
