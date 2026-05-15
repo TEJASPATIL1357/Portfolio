@@ -18,25 +18,20 @@ html {
   overscroll-behavior: none;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #000000; }
+::-webkit-scrollbar-thumb  {
   background: linear-gradient(180deg, var(--heist-red), var(--heist-gold));
   border-radius: 999px;
 }
 
-
 /* ===== Money Heist Theme Colors ===== */
 :root {
-  --heist-red: #e50914;
-  --heist-black: #0a0a0a;
+  --heist-red:       #e50914;
+  --heist-black:     #0a0a0a;
   --heist-dark-gray: #1a1a1a;
-  --heist-gold: #ffc107;
-  --heist-glow-red: rgba(229, 9, 20, 0.4);
+  --heist-gold:      #ffc107;
+  --heist-glow-red:  rgba(229, 9, 20, 0.4);
 }
 
 /* ===== Selection ===== */
@@ -95,29 +90,18 @@ html {
 
 /* ===== Neon Border Animation ===== */
 @keyframes neon-pulse {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(229, 9, 20, 0.3), 0 0 10px rgba(229, 9, 20, 0.15);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.5), 0 0 30px rgba(229, 9, 20, 0.2);
-  }
+  0%, 100% { box-shadow: 0 0 5px rgba(229, 9, 20, 0.3), 0 0 10px rgba(229, 9, 20, 0.15); }
+  50%       { box-shadow: 0 0 15px rgba(229, 9, 20, 0.5), 0 0 30px rgba(229, 9, 20, 0.2); }
 }
 
 /* ===== Animated Gradient Background ===== */
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
-
 .animated-gradient {
-  background: linear-gradient(
-    -45deg,
-    #000000,
-    #0a0a0a,
-    #1a0000,
-    #000000
-  );
+  background: linear-gradient(-45deg, #000000, #0a0a0a, #1a0000, #000000);
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
 }
@@ -132,24 +116,20 @@ html {
 .noise-overlay::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 1000;
-  opacity: 0.05;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
 /* ===== Floating Animation ===== */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50%       { transform: translateY(-20px); }
 }
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
+.animate-float { animation: float 6s ease-in-out infinite; }
 
 /* ===== Grid Background ===== */
 .grid-bg {
@@ -158,14 +138,12 @@ html {
     linear-gradient(90deg, rgba(229, 9, 20, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
 @keyframes scan {
-  0% { transform: translateY(-100%); }
+  0%   { transform: translateY(-100%); }
   100% { transform: translateY(1000%); }
 }
-
-.animate-scan {
-  animation: scan 3s linear infinite;
-}
+.animate-scan { animation: scan 3s linear infinite; }
 
 .glitch-text:hover {
   animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
@@ -174,13 +152,10 @@ html {
 }
 
 /* ===== Heist Specific Utils ===== */
-.text-heist-red { color: var(--heist-red); }
-.bg-heist-red { background-color: var(--heist-red); }
+.text-heist-red   { color: var(--heist-red); }
+.bg-heist-red     { background-color: var(--heist-red); }
 .border-heist-red { border-color: var(--heist-red); }
-
-.heist-glow {
-  box-shadow: 0 0 15px var(--heist-glow-red);
-}
+.heist-glow       { box-shadow: 0 0 15px var(--heist-glow-red); }
 
 .heist-button {
   background: var(--heist-red);
@@ -188,7 +163,6 @@ html {
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
-
 .heist-button:hover {
   background: transparent;
   border-color: var(--heist-red);
@@ -197,43 +171,19 @@ html {
 }
 
 /* ===== Confidential File Flip ===== */
-.confidential-card {
-  perspective: 1000px;
-}
-
+.confidential-card { perspective: 1000px; }
 .confidential-card-inner {
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
-
-.confidential-card:hover .confidential-card-inner {
-  transform: rotateY(180deg);
-}
-
-.confidential-card-front, .confidential-card-back {
-  backface-visibility: hidden;
-}
-
-.confidential-card-back {
-  transform: rotateY(180deg);
-}
-
-/* ===== Mobile Icon Colors ===== */
-@media (max-width: 768px) {
-  .card-nav-icon {
-    color: var(--heist-red) !important;
-    filter: drop-shadow(0 0 5px var(--heist-glow-red));
-  }
-  
-  .glass-card {
-    background: rgba(26, 26, 26, 0.9);
-  }
-}
+.confidential-card:hover .confidential-card-inner { transform: rotateY(180deg); }
+.confidential-card-front, .confidential-card-back  { backface-visibility: hidden; }
+.confidential-card-back { transform: rotateY(180deg); }
 
 /* ===== Global Fixed Background ===== */
 body {
   font-family: 'Inter', sans-serif;
-  background-color: transparent;
+  background-color: #080808;
   color: #e2e8f0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -245,19 +195,106 @@ body {
   content: '';
   position: fixed;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.4) 50%, rgba(10, 10, 10, 0.7) 100%);
+  background: linear-gradient(to bottom,
+    rgba(10,10,10,0.5) 0%,
+    rgba(10,10,10,0.15) 50%,
+    rgba(10,10,10,0.5) 100%);
   pointer-events: none;
   z-index: 0;
 }
-
-.heist-hero-overlay {
-  background: transparent; /* Handled by global overlay now */
+/* On mobile reduce overlay further so bg animations breathe */
+@media (max-width: 767px) {
+  #root::before {
+    background: linear-gradient(to bottom,
+      rgba(10,10,10,0.35) 0%,
+      rgba(10,10,10,0.05) 50%,
+      rgba(10,10,10,0.35) 100%);
+  }
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.heist-hero-overlay { background: transparent; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== Hero Keyframes ===== */
+@keyframes heroDotPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
 }
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* CSS orb — mobile hero */
+@keyframes mobileOrbSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes mobileOrbPulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.06); }
+}
+
+/* Radar sweep — rotating conic gradient */
+@keyframes radarSweep {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* Sonar ripple rings expanding outward */
+@keyframes ripple {
+  0%   { width: 10px; height: 10px; opacity: 0.7; border-width: 2px; }
+  70%  { opacity: 0.15; }
+  100% { width: min(700px, 180vw); height: min(700px, 180vw); opacity: 0; border-width: 1px; }
+}
+
+/* Vertical data stream segments falling */
+@keyframes dataStream {
+  0%   { transform: translateY(-100%); opacity: 0;   }
+  15%  { opacity: 1;   }
+  85%  { opacity: 0.8; }
+  100% { transform: translateY(400%);  opacity: 0;   }
+}
+
+/* HUD corner brackets grow-in */
+@keyframes hudCorner {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* Mobile animated background blobs — no conflicting translate (position handled in JSX) */
+@keyframes bgBlob1 {
+  0%, 100% { transform: translateX(-50%) scale(1);     opacity: 0.85; }
+  50%       { transform: translateX(-50%) scale(1.15) translateY(-20px); opacity: 1;    }
+}
+@keyframes bgBlob2 {
+  0%, 100% { transform: scale(1);    opacity: 0.75; }
+  50%       { transform: scale(1.12) translate(15px, -15px); opacity: 1;    }
+}
+
+/* ===== Mobile Performance Overrides ===== */
+@media (max-width: 767px) {
+  /* Disable expensive GPU blur on mobile — replace with solid semi-transparent */
+  .glass-card {
+    background: rgba(18, 18, 18, 0.92) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Reduce noise overlay opacity on mobile */
+  .noise-overlay::before { opacity: 0.025; }
+
+  /* Contain layout for heavy sections */
+  section {
+    contain: layout style;
+  }
+
+  /* will-change hints for animated elements */
+  .animate-pulse  { will-change: opacity; }
+  .animate-spin   { will-change: transform; }
+  .animate-float  { will-change: transform; }
+
+  /* Mobile icon colors */
+  .card-nav-icon {
+    color: var(--heist-red) !important;
+    filter: drop-shadow(0 0 5px var(--heist-glow-red));
+  }
 }

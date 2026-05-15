@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -10,13 +10,14 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // scroll listener
-  if (typeof window !== 'undefined') {
-    window.onscroll = () => setScrolled(window.scrollY > 50);
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <>
@@ -34,8 +35,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="relative group" data-hover>
             <span className="font-display text-xl font-black tracking-tighter text-white uppercase italic">
-              TEJAS
-              <span className="text-heist-red">_DEV</span>
+              TEJAS<span className="text-heist-red">_DEV</span>
             </span>
             <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-heist-red group-hover:w-full transition-all duration-300" />
           </a>
@@ -59,7 +59,7 @@ const Navbar = () => {
               data-hover
               className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-full bg-heist-red/10 border border-heist-red/40 text-heist-red hover:bg-heist-red hover:text-white transition-all duration-300"
             >
-              Resume ↓
+              RESUME
             </a>
           </div>
 
@@ -69,9 +69,9 @@ const Navbar = () => {
             className="md:hidden flex flex-col gap-[5px] p-2"
             aria-label="Toggle menu"
           >
-            <motion.span animate={mobileOpen ? { rotate: 45, y: 7 }  : { rotate: 0, y: 0 }}  className="w-6 h-[2px] bg-heist-red block" />
-            <motion.span animate={mobileOpen ? { opacity: 0 }        : { opacity: 1 }}         className="w-6 h-[2px] bg-heist-red block" />
-            <motion.span animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} className="w-6 h-[2px] bg-heist-red block" />
+            <motion.span animate={mobileOpen ? { rotate: 45,  y: 7 }  : { rotate: 0, y: 0 }}  className="w-6 h-[2px] bg-heist-red block" />
+            <motion.span animate={mobileOpen ? { opacity: 0 }          : { opacity: 1 }}        className="w-6 h-[2px] bg-heist-red block" />
+            <motion.span animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}   className="w-6 h-[2px] bg-heist-red block" />
           </button>
         </div>
       </motion.nav>
@@ -84,11 +84,11 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 200 }}
-            className="fixed inset-0 z-[1400] bg-[#0a0a0a]/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-6 overflow-hidden"
+            className="fixed inset-0 z-[1400] bg-[#0a0a0a]/98 flex flex-col items-center justify-center gap-6 overflow-hidden"
           >
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-1/4 -right-20 w-80 h-80 bg-heist-red/10 rounded-full blur-[100px]" />
-              <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-heist-red/5 rounded-full blur-[100px]" />
+              <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-heist-red/5  rounded-full blur-[100px]" />
             </div>
 
             <div className="absolute top-10 left-10">
@@ -104,7 +104,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="relative text-3xl md:text-4xl font-display font-black text-white/50 hover:text-heist-red transition-all duration-300 uppercase italic tracking-tighter group"
+                className="relative text-3xl font-display font-black text-white/50 hover:text-heist-red transition-all duration-300 uppercase italic tracking-tighter group"
               >
                 <span className="relative z-10">{link.label}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-1 bg-heist-red group-hover:w-full transition-all duration-300" />

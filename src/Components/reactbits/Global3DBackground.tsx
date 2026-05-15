@@ -5,16 +5,15 @@ import * as THREE from 'three';
 import { useScroll } from 'framer-motion';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 
-// ── detect mobile once ──────────────────────────────────────────────────────
-const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768;
+const isMobileDevice = () => typeof window !== 'undefined' && window.innerWidth < 768;
 
-// ── lightweight environment ──────────────────────────────────────────────────
-function VaultEnvironment() {
+
+/* ── Desktop Three.js scene ─────────────────────────────────────── */
+function VaultEnvironment({ mobile }: { mobile: boolean }) {
   const mouse = useRef(new THREE.Vector2());
-  const mobile = isMobile();
 
   useEffect(() => {
-    if (mobile) return;
+    if (mobile) return; // No mouse tracking on touch devices
     const onMove = (e: MouseEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -25,15 +24,11 @@ function VaultEnvironment() {
 
   return (
     <>
-      <ambientLight intensity={0.08} />
-      {/* Removed castShadow — expensive */}
-      <spotLight position={[5, 10, 5]} angle={0.2} penumbra={1} intensity={12} color="#e50914" />
-      <pointLight position={[-5, 2, 2]} intensity={15} color="#ffc107" />
-
+      <ambientLight intensity={0.12} />
+      <spotLight position={[5, 10, 5]} angle={0.2} penumbra={1} intensity={mobile ? 8 : 12} color="#e50914" />
+      <pointLight position={[-5, 2, 2]} intensity={mobile ? 10 : 15} color="#ffc107" />
       <ScrollScene mouse={mouse} mobile={mobile} />
-
-      {/* Reduced sparkles */}
-      <Sparkles count={mobile ? 3 : 8} scale={15} size={2} speed={0.3} color="#e50914" />
+      <Sparkles count={mobile ? 4 : 8} scale={15} size={mobile ? 1.5 : 2} speed={0.3} color="#e50914" />
     </>
   );
 }
@@ -45,42 +40,33 @@ function ScrollScene({ mouse, mobile }: { mouse: React.MutableRefObject<THREE.Ve
   useFrame(() => {
     if (!groupRef.current) return;
     const p = scrollYProgress.get();
-    groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, -1 + p * 2, 0.05);
-    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, -Math.PI * 0.1 * p, 0.05);
+    // Start higher (0.8) and move down as we scroll
+    groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, 0.8 - p * 2.5, 0.05);
+    // Add some initial rotation that straightens out
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, -Math.PI * 0.15 + (Math.PI * 0.1 * p), 0.05);
   });
 
   return (
     <group ref={groupRef}>
-      {/* Backdrop */}
       <mesh position={[0, 0, -12]} scale={20}>
         <planeGeometry args={[2, 1.2]} />
         <meshStandardMaterial color="#000000" emissive="#e50914" emissiveIntensity={0.015} />
       </mesh>
-
-      {/* Character — desktop only */}
-      {!mobile && (
-        <Suspense fallback={null}>
-          <HeistCharacter
-            url="https://threejs.org/examples/models/gltf/Soldier.glb"
-            position={[0, -2, 0]}
-            scale={3.2}
-            rotation={[0, Math.PI, 0]}
-            mouse={mouse}
-          />
-        </Suspense>
-      )}
-
-      {/* Fewer dossiers & bars on desktop, none on mobile */}
-      {!mobile && <FloatingDossiers count={3} />}
+      <Suspense fallback={null}>
+        <HeistCharacter
+          url="https://threejs.org/examples/models/gltf/Soldier.glb"
+          position={[0, -2, 0]}
+          scale={mobile ? 2.8 : 3.2}
+          rotation={[0, Math.PI, 0]}
+          mouse={mouse}
+        />
+      </Suspense>
+      <FloatingDossiers count={mobile ? 2 : 3} />
       {!mobile && <GoldBars count={4} />}
-
-      {/* Floor — desktop only (heavy) */}
-      {!mobile && (
-        <mesh rotation-x={-Math.PI / 2} position={[0, -2, 0]}>
-          <planeGeometry args={[40, 40]} />
-          <meshStandardMaterial color="#000000" roughness={0.15} metalness={0.85} />
-        </mesh>
-      )}
+      <mesh rotation-x={-Math.PI / 2} position={[0, -2, 0]}>
+        <planeGeometry args={[40, 40]} />
+        <meshStandardMaterial color="#000000" roughness={0.15} metalness={0.85} />
+      </mesh>
     </group>
   );
 }
@@ -94,7 +80,6 @@ function HeistCharacter({ url, mouse, ...props }: any) {
   useEffect(() => {
     if (actions?.['Idle']) actions['Idle'].play();
     else if (actions && Object.keys(actions).length > 0) actions[Object.keys(actions)[0]]?.play();
-
     scene.traverse((obj: any) => {
       if (obj.isBone && obj.name.toLowerCase().includes('head')) headRef.current = obj;
       if (obj.isMesh) obj.material.envMapIntensity = 0.3;
@@ -113,10 +98,9 @@ function HeistCharacter({ url, mouse, ...props }: any) {
 
 function FloatingDossiers({ count = 3 }) {
   const items = useMemo(() => Array.from({ length: count }).map(() => ({
-    position: [(Math.random() - 0.5) * 12, Math.random() * 4, (Math.random() - 0.5) * 8 - 4] as [number,number,number],
-    rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as [number,number,number],
+    position: [(Math.random() - 0.5) * 12, Math.random() * 4, (Math.random() - 0.5) * 8 - 4] as [number, number, number],
+    rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as [number, number, number],
   })), [count]);
-
   return (
     <group>
       {items.map((item, i) => (
@@ -133,11 +117,10 @@ function FloatingDossiers({ count = 3 }) {
 
 function GoldBars({ count = 4 }) {
   const bars = useMemo(() => Array.from({ length: count }).map(() => ({
-    position: [(Math.random() - 0.5) * 18, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10 - 8] as [number,number,number],
-    rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as [number,number,number],
+    position: [(Math.random() - 0.5) * 18, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10 - 8] as [number, number, number],
+    rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0] as [number, number, number],
     scale: Math.random() * 0.35 + 0.2,
   })), [count]);
-
   return (
     <group>
       {bars.map((bar, i) => (
@@ -165,22 +148,27 @@ function ScrollCamera() {
 }
 
 const Global3DBackground = () => {
-  const mobile = isMobile();
-
-  // Skip 3D background entirely on mobile — massive perf win
-  // if (mobile) return null; // Re-enabled for mobile as per user request
+  const mobile = isMobileDevice();
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none">
-      <Canvas shadows={false} dpr={[1, 1]} frameloop={mobile ? 'demand' : 'always'}>
-        <PerspectiveCamera makeDefault position={[0, 0, mobile ? 6 : 4]} fov={50} />
+      <Canvas 
+        shadows={false} 
+        dpr={mobile ? 1 : [1, 1.2]} 
+        frameloop="always"
+        gl={{ antialias: !mobile, powerPreference: 'high-performance' }}
+      >
+        <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={mobile ? 60 : 50} />
         <Suspense fallback={null}>
-          <VaultEnvironment />
+          <VaultEnvironment mobile={mobile} />
           <ScrollCamera />
-          <EffectComposer multisampling={0}>
-            <Bloom luminanceThreshold={1.6} intensity={0.7} radius={0.2} />
-            <Vignette darkness={1.0} />
-          </EffectComposer>
+          {/* Only use expensive post-processing on desktop */}
+          {!mobile && (
+            <EffectComposer multisampling={0}>
+              <Bloom luminanceThreshold={1.6} intensity={0.7} radius={0.2} />
+              <Vignette darkness={1.0} />
+            </EffectComposer>
+          )}
         </Suspense>
       </Canvas>
     </div>
